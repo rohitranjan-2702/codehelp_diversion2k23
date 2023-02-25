@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { MultiSelect } from "react-multi-select-component";
-
+import { useNavigate } from "react-router-dom";
+import { LoginContext } from "../contexts/LoginContext"; 
 const options = [
   { label: "HTML", value: "html" },
   { label: "CSS", value: "css" },
@@ -11,8 +12,80 @@ const options = [
   // { label: "JAVASCRIPT", value: "strawberry", disabled: true },
 ];
 
+const def = {
+  name: "",
+  email: "",
+  password: "",
+  skill:[],
+  education:"",
+  
+  
+ 
+};
+
 const Signuptut = () => {
   const [selected, setSelected] = useState([]);
+ 
+    const ashu=selected.map((e)=>{
+     return e.value;
+    })
+  
+  //console.log(selected);
+  const [signstate, setSignState] = useState(def);
+  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const navigate = useNavigate();
+
+  const onInputChange = (e) => {
+    setSignState({ ...signstate, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    //
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("name", signstate.name);
+    urlencoded.append("email", signstate.email);
+    urlencoded.append("password", signstate.password);
+    urlencoded.append("skills", ashu);
+    urlencoded.append("education", signstate.education);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow",
+    };
+
+    fetch("http://localhost:5000/teacher/register", requestOptions)
+      .then((response) => {
+        // if (response.status !== 200) {
+        //   throw new Error("something went wrong");
+        // }
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        setIsLoggedIn(true);
+        setUserName(result.name);
+        setUserType(result.type);
+        localStorage.setItem("token", result.token);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            name: result.name,
+            isAuthed: true,
+            type: result.type,
+          })
+        );
+        navigate("/profileteacher");
+      })
+      .catch((error) => console.log("error", error));
+
+    setSignState(def);
+  };
+
+  
   return (
     <>
       <div class="flex justify-center">
@@ -20,21 +93,31 @@ const Signuptut = () => {
           <p class="flex justify-center font-bold text-4xl">Tutor SignUp</p>
           <p class="m-5">Enter Your Fname</p>
           <input
-            type="text "
+           type="name"
+                name="name"
+                id="floating_name"
             class=" w-full p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
             placeholder="First name"
+            onChange={(e) => onInputChange(e)}
           />
           <p class="m-5">Education</p>
           <input
-            type="text"
+            type="education"
+                name="education"
+                id="floating_education"
             class="w-full  p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
             placeholder="education"
+            onChange={(e) => onInputChange(e)}
           />
           <p class="m-5">Enter Email</p>
           <input
-            type="text"
+           
+            type="email"
+                name="email"
+                id="floating_email"
             class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
             placeholder="email Id"
+            onChange={(e) => onInputChange(e)}
           />
 
           <div className="mt-4">
@@ -50,9 +133,28 @@ const Signuptut = () => {
               hasSelectAll={false}
             />
           </div>
-          <div class="flex justify-center">
-<button type="button" class=" mt-5 align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SignUp</button>
-</div>
+         
+ <div className="group relative z-0 mb-6 w-full">
+ <p class="m-5">Passoword</p>
+              <input
+                type="password"
+                name="password"
+                id="floating_password"
+                class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
+                placeholder=" "
+                required
+                onChange={(e) => onInputChange(e)}
+                // onChange={(e) => onInputChange(e)}
+              />
+             
+                
+              
+            </div>
+            <div class="flex justify-center">
+               <button onClick={(e) => {
+                handleSubmit(e);
+              }} type="button" class=" mt-5 align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SignUp</button>
+            </div>
         </div>
       </div>
     </>

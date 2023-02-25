@@ -36,8 +36,8 @@ const Home = () => {
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
       <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font text-gray-900">Want to help hundreds of student out there, become a tutor at CodeHelp.</h1>
-      <button class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 m-3" onClick={()=>navigate('/signuptut')}>SignUp as a Tutor</button>
-      <button class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 m-3" onClick={()=>navigate('/tutor/login')}>Login</button>
+      <button onClick={() => navigate("/signuptut")} class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 m-3">SignUp as a Tutor</button>
+      <button onClick={() => navigate("/logintut")} class="flex-shrink-0 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg sm:mt-0 m-3">Login</button>
     </div>
   </div>
 </section>
