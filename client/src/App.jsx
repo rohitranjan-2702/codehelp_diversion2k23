@@ -16,12 +16,8 @@ import ProtectedRoutes from "./component/ProtectedRoute";
 import ProtectedStudRoutes from "./component/ProtectedStudRoute";
 import ProtectedTeachRoutes from "./component/ProtectedTeachRoute";
 import Signuptut from "./page/Signuptut";
-<<<<<<< HEAD
-import Feedbackpage from "./component/Feedbackpage";
-=======
 import Logintut from "./page/Logintut"
 import Feedbackpage from "./component/Feedbackpage"
->>>>>>> 86979a33b331823cb2b02bcded38151578840418
 import TutorLogin from "./page/TutorLogin";
 import StudentDoubt from "./page/StudentDoubt";
 import TeacherDoubt from "./page/TeacherDoubt";
