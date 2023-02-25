@@ -8,6 +8,7 @@ const Payment = ({ amount, img, checkoutHandler }) => {
             <Text>₹{amount}</Text>
             <Button onClick={() => checkoutHandler(amount)}>Buy Now</Button>
         </VStack>
+       
     )
 }
 
