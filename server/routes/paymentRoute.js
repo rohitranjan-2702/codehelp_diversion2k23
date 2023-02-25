@@ -10,4 +10,4 @@ const router = express.Router();
 router.post("/verification", protect, verifyPaymentDetails);
 router.post("/razorpay", protect, performPayment);
 
-router.module.exports = router;
+module.exports = router;
