@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 
 const socket = io.connect("http://localhost:4000");
 
 function TeacherDoubt() {
   const teacherId = JSON.parse(localStorage.getItem("user")).id;
-  console.log(teacherId);
+  const authToken = localStorage.getItem("token");
   const [questions, setQuestions] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     socket.emit("teacherOnline", { teacherId });
 
@@ -15,6 +17,7 @@ function TeacherDoubt() {
       const teacherId = payload.teacherId;
       console.log(`question answered ${studentId} ${teacherId}`);
       handleMoveToCall(studentId, teacherId);
+      navigate("/video");
     });
 
     socket.on("questionAvailable", (payload) => {
@@ -29,12 +32,41 @@ function TeacherDoubt() {
     };
   });
 
-  const handleMoveToCall = (studentId, teacherId) => {}; //TODO: handle it
+  const handleMoveToCall = async (studentId, teacherId) => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${authToken}`);
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("teacherId", teacherId);
+    urlencoded.append("studentId", studentId);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow",
+    };
+
+    const result = await fetch(
+      "http://localhost:5000/agora/CallCredentials",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+
+    console.log(result);
+    localStorage.setItem("video", JSON.stringify(result));
+    return { result };
+  }; //TODO: handle it
+
   const handleAnswer = (e, studentId) => {
     e.preventDefault();
     socket.emit("questionAccepted", { studentId, teacherId });
     setQuestions([]);
   }; //TODO: handle it
+
   const handleDecline = (e, studentId) => {
     e.preventDefault();
     setQuestions(

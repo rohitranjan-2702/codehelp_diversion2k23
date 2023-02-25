@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import { LoginContext } from "../contexts/LoginContext";
 
@@ -9,6 +10,7 @@ function StudentDoubt() {
   const authToken = localStorage.getItem("token");
   const [question, setQuestion] = useState("");
   const resultRef = useRef();
+  const navigate = useNavigate();
   useEffect(() => {
     socket.emit("studentConnected", { studentId });
 
@@ -22,10 +24,10 @@ function StudentDoubt() {
       console.log(`question answered ${JSON.stringify(payload)}`);
       resultRef.current.innerText = "Video call opening...";
       handleMoveToCall(payload.teacherId, payload.studentId);
+      navigate("/video");
     });
   });
   const handleMoveToCall = async (teacherId, studentId) => {
-    console.log(teacherId)
     var myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${authToken}`);
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -45,12 +47,13 @@ function StudentDoubt() {
       "http://localhost:5000/agora/CallCredentials",
       requestOptions
     )
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((result) => result)
       .catch((error) => console.log("error", error));
 
-    console.log(result.appId, result.token, result.channel);
-    // return { appId, token, channel };
+    console.log(result);
+    localStorage.setItem("video", JSON.stringify(result));
+    return { result };
   }; //TODO: handle it
 
   const sendQuestion = (e) => {

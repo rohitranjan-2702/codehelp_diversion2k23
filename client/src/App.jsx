@@ -16,10 +16,11 @@ import ProtectedRoutes from "./component/ProtectedRoute";
 import ProtectedStudRoutes from "./component/ProtectedStudRoute";
 import ProtectedTeachRoutes from "./component/ProtectedTeachRoute";
 import Signuptut from "./page/Signuptut";
-import Feedbackpage from "./component/Feedbackpage"
+import Feedbackpage from "./component/Feedbackpage";
 import TutorLogin from "./page/TutorLogin";
 import StudentDoubt from "./page/StudentDoubt";
 import TeacherDoubt from "./page/TeacherDoubt";
+import VideoComponent from "./component/VideoComponent";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -31,7 +32,9 @@ function App() {
   const [userEdu, setUserEdu] = useState(
     JSON.parse(localStorage.getItem("user"))?.name || ""
   );
-  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("user"))?.id || "");
+  const [userId, setUserId] = useState(
+    JSON.parse(localStorage.getItem("user"))?.id || ""
+  );
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("user")) || ""
   );
@@ -92,6 +95,7 @@ function App() {
             </Route>
             <Route path="/pricing" element={<Pricing />} />
           </Route>
+          <Route path="/video" element={<VideoComponent />} />
         </Routes>
         <Footer />
       </LoginContext.Provider>

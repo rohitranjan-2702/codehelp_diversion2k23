@@ -4,26 +4,44 @@ import {
   createClient,
   createMicrophoneAndCameraTracks,
 } from "agora-rtc-react";
+import { useNavigate } from "react-router-dom";
 
 const config = {
   mode: "rtc",
   codec: "vp8",
 };
+let videoValues;
 
-let appId = "b002cea581ba427c942a771f6800779b";
-let token =
-  "006b002cea581ba427c942a771f6800779bIABS1cqXfEqVB3fklAdKmmWZEB5s8eay0eYR5tYnmkfQHLNEDKkAAAAAIgDEYHJ9tRr7YwQAAQDVVfpjAgDVVfpjAwDVVfpjBADVVfpj";
+let appId;
+let token;
+let channelName;
 
-const VideoComponent = ({ appId, token, channelName }) => {
+const VideoComponent = () => {
+  videoValues = JSON.parse(localStorage.getItem("video")) || null;
+  appId = videoValues?.appId || null;
+  token = videoValues?.token;
+  channelName = videoValues?.channel;
+  console.log(videoValues);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (videoValues === null) {
+      if (JSON.parse(localStorage.getItem("user")).type === "user") {
+        navigate("/profilestudent");
+      } else {
+        navigate("/profileteacher");
+      }
+    }
+  }, [videoValues]);
   const [inCall, setInCall] = useState(false);
   //   const [channelName, setChannelName] = useState("");
+  console.log(appId);
   return (
     <div>
       <h1 className="heading">Agora RTC NG SDK React Wrapper</h1>
-      {inCall ? (
+      {appId ? (
         <VideoCall setInCall={setInCall} channelName={channelName} />
       ) : (
-        <ChannelForm setInCall={setInCall} setChannelName={setChannelName} />
+        ""
       )}
     </div>
   );
@@ -116,6 +134,7 @@ const Videos = ({ users, tracks }) => {
 
 export const Controls = ({ tracks, setStart, setInCall }) => {
   const client = useClient();
+  const navigate = useNavigate();
   const [trackState, setTrackState] = useState({ video: true, audio: true });
 
   const mute = async (type) => {
@@ -144,6 +163,8 @@ export const Controls = ({ tracks, setStart, setInCall }) => {
     await client.leave();
     setStart(false);
     setInCall(false);
+    localStorage.removeItem("video");
+    navigate(0);
   };
 
   return (
@@ -159,29 +180,29 @@ export const Controls = ({ tracks, setStart, setInCall }) => {
   );
 };
 
-const ChannelForm = ({ setInCall, setChannelName }) => {
-  return (
-    <form className="join">
-      {appId === "" && (
-        <p style={{ color: "red" }}>
-          Please enter your Agora App ID in App.tsx and refresh the page
-        </p>
-      )}
-      <input
-        type="text"
-        placeholder="Enter Channel Name"
-        onChange={(e) => setChannelName(e.target.value)}
-      />
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          setInCall(true);
-        }}
-      >
-        Join
-      </button>
-    </form>
-  );
-};
+// const ChannelForm = ({ setInCall, setChannelName }) => {
+//   return (
+//     <form className="join">
+//       {appId === "" && (
+//         <p style={{ color: "red" }}>
+//           Please enter your Agora App ID in App.tsx and refresh the page
+//         </p>
+//       )}
+//       <input
+//         type="text"
+//         placeholder="Enter Channel Name"
+//         onChange={(e) => setChannelName(e.target.value)}
+//       />
+//       <button
+//         onClick={(e) => {
+//           e.preventDefault();
+//           setInCall(true);
+//         }}
+//       >
+//         Join
+//       </button>
+//     </form>
+//   );
+// };
 
 export default VideoComponent;
