@@ -23,6 +23,7 @@ const register = expressAsyncHandler(async (req, res) => {
   const user = await userModel.create({
     name,
     email,
+    type: 'user',
     password: hashedPass,
   });
 
@@ -51,6 +52,7 @@ const login = expressAsyncHandler(async (req, res) => {
       _id: user.id,
       name: user.name,
       email: user.email,
+      type: 'user',
       token: generateJwt(user.id),
     });
   } else {
@@ -67,6 +69,7 @@ const getMe = expressAsyncHandler(async (req, res) => {
     res.status(200).json({
       id: _id,
       name,
+      type: 'user',
       email,
     });
   });
