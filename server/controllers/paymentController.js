@@ -1,5 +1,12 @@
 const expressAsyncHandler = require("express-async-handler");
+const shortid = require("shortid");
+const Razorpay = require("razorpay");
 
+
+const razorpay = new Razorpay({
+  key_id: "rzp_test_35zy3Hqp4Jtv6M",
+  key_secret: "0LDDihu5S8UgdBS4o6KvL4Fj",
+});
 // @desc : register new user
 // @route: POST /users/register
 // @access: public

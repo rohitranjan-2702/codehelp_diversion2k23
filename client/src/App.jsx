@@ -16,8 +16,7 @@ import ProtectedRoutes from "./component/ProtectedRoute";
 import ProtectedStudRoutes from "./component/ProtectedStudRoute";
 import ProtectedTeachRoutes from "./component/ProtectedTeachRoute";
 import Signuptut from "./page/Signuptut";
-import Logintut from "./page/Logintut"
-import Feedbackpage from "./component/Feedbackpage"
+import Feedbackpage from "./component/Feedbackpage";
 import TutorLogin from "./page/TutorLogin";
 
 function App() {
@@ -53,7 +52,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/logintut" element={<Logintut />} />
           <Route path="/tutor/login" element={<TutorLogin />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signuptut" element={<Signuptut />} />
@@ -70,6 +68,7 @@ function App() {
             <Route path="/pricing" element={<Pricing />} />
           </Route>
         </Routes>
+        <Feedbackpage />
         <Footer />
       </LoginContext.Provider>
     </BrowserRouter>

@@ -1,17 +1,19 @@
-import React from 'react'
-import { useNavigate } from "react-router-dom"
-
+import React,{useContext} from 'react'
+import { useNavigate, } from "react-router-dom"
+import { LoginContext } from '../contexts/LoginContext';
 const Header = () => {
 
-  // const { isLoggedIn, setIsLoggedIn, setUserName } = useContext(LoginContext);
+   const { isLoggedIn, setIsLoggedIn, setUserName } = useContext(LoginContext);
   const navigate = useNavigate();
 
-  // const handleLogOut = () => {
-  //   localStorage.removeItem("token");
-  //   setIsLoggedIn(false);
-  //   setUserName("");
-  //   navigate("/login");
-  // };
+  const handleLogOut = () => {
+    console.log();
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    setUserName("");
+    navigate("/login");
+  };
 
   return (
     <>
@@ -24,17 +26,17 @@ const Header = () => {
 </a>
 <div class="flex md:order-2">
    
-   {/* {isLoggedIn ? ( */}
+   {isLoggedIn ? (
    
    <div>
                 <button
                   className="text-md px-6 py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
-                  // onClick={() => handleLogOut()}
+                  onClick={() => handleLogOut()}
                 >
                   Logout
                 </button>
               </div>
-            {/* ) : ( */}
+            ) : (
               <div>
                 <button
                   className="text-md px-6 py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
@@ -49,7 +51,7 @@ const Header = () => {
                   Sign Up
                 </button>
               </div>
-            {/* )} */}
+            )}
 
 
    <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
