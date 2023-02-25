@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { LoginContext } from "../Contexts/LoginContext";
+import { LoginContext } from "../contexts/LoginContext";
 
 const def = {
   name: "",
@@ -10,7 +10,7 @@ const def = {
 };
 const Signup = () => {
   const [signstate, setSignState] = useState(def);
-  // const { setUserName, setIsLoggedIn } = useContext(LoginContext);
+  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const onInputChange = (e) => {
@@ -43,9 +43,15 @@ const Signup = () => {
       })
       .then((result) => {
         console.log(result);
-        // setIsLoggedIn(true);
-        // setUserName(result.name);
+        setIsLoggedIn(true);
+        setUserName(result.name);
+        setUserType(result.type);
         localStorage.setItem("token", result.token);
+        localStorage.setItem("user", {
+          name: result.name,
+          isAuthed: true,
+          type: result.type,
+        });
         navigate("/dashboard");
       })
       .catch((error) => console.log("error", error));
@@ -60,7 +66,7 @@ const Signup = () => {
           <h2 className="mb-4 text-2xl font-semibold">SIGNUP</h2>
 
           <form>
-          <div className="group relative z-0 mb-6 w-full">
+            <div className="group relative z-0 mb-6 w-full">
               <input
                 type="name"
                 name="name"
@@ -128,10 +134,7 @@ const Signup = () => {
                 Confirm password
               </label>
             </div> */}
-            <div class="group relative z-0 mb-6 w-full flex">
-            
-             
-            </div>
+            <div class="group relative z-0 mb-6 w-full flex"></div>
             <button
               type="submit"
               className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
