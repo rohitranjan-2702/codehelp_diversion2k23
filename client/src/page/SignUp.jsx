@@ -34,7 +34,7 @@ const Signup = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/user/register", requestOptions)
+    fetch("http://localhost:3001/user/register", requestOptions)
       .then((response) => {
         // if (response.status !== 200) {
         //   throw new Error("something went wrong");
@@ -46,7 +46,7 @@ const Signup = () => {
         // setIsLoggedIn(true);
         // setUserName(result.name);
         localStorage.setItem("token", result.token);
-        navigate("/dashboard");
+        navigate("/profilestudent");
       })
       .catch((error) => console.log("error", error));
 
@@ -92,6 +92,23 @@ const Signup = () => {
                 className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
               >
                 Email address
+              </label>
+            </div>
+            <div className="group relative z-0 mb-6 w-full">
+              <input
+                type="password"
+                name="password"
+                id="floating_password"
+                className="peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-gray-600 dark:text-white dark:focus:border-blue-500"
+                placeholder=" "
+                required
+                onChange={(e) => onInputChange(e)}
+              />
+              <label
+                htmlFor="floating_password"
+                className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:font-medium peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500"
+              >
+                password
               </label>
             </div>
             <div class="group relative z-0 mb-6 w-full flex">
