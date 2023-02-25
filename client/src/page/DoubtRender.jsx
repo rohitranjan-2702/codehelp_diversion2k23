@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const DoubtRender = () => {
   return (
@@ -124,7 +124,7 @@ const DoubtRender = () => {
 </section> */}
 
     </>
-  )
-}
+  );
+};
 
-export default DoubtRender
+export default DoubtRender;
