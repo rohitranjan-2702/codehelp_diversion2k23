@@ -9,6 +9,8 @@ import DoubtRender from './page/DoubtRender';
 import Profile from './page/Profiletut';
 import Profilestudent from './page/Profilestudent';
 import Pricing from './component/Pricing';
+import Signuptut from './page/Signuptut';
+import Feedbackpage from "./component/Feedbackpage"
 
 
 
