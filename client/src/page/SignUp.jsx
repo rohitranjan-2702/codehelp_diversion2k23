@@ -11,6 +11,7 @@ const def = {
 const Signup = () => {
   const [signstate, setSignState] = useState(def);
   const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  console.log(setUserName);
   const navigate = useNavigate();
 
   const onInputChange = (e) => {
