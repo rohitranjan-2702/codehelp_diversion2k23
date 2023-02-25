@@ -11,7 +11,6 @@ const def = {
 const Signup = () => {
   const [signstate, setSignState] = useState(def);
   const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
-  console.log(setUserName);
   const navigate = useNavigate();
 
   const onInputChange = (e) => {
@@ -48,6 +47,14 @@ const Signup = () => {
         setUserName(result.name);
         setUserType(result.type);
         localStorage.setItem("token", result.token);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            name: result.name,
+            isAuthed: true,
+            type: result.type,
+          })
+        );
         navigate("/profilestudent");
       })
       .catch((error) => console.log("error", error));
@@ -113,7 +120,7 @@ const Signup = () => {
                 password
               </label>
             </div>
-           
+
             <button
               type="submit"
               className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"

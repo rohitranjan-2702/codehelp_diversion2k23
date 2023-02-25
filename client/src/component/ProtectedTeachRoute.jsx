@@ -7,7 +7,7 @@ function ProtectedTeachRoutes() {
   const { isLoggedIn, userName, userType } = useContext(LoginContext);
   const isAuthed = isLoggedIn && userName && userType === "tutor";
 
-  return isAuthed ? <Outlet /> : <Navigate to="/login" />;
+  return isAuthed ? <Outlet /> : <Navigate to="/tutor/login" />;
 }
 
 export default ProtectedTeachRoutes;

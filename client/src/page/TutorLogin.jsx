@@ -9,7 +9,7 @@ const def = {
 
 const TutorLogin = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const { setUserName, setUserEmail, setIsLoggedIn, setUserType } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -39,6 +39,7 @@ const TutorLogin = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
+        setUserEmail(result.email);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
@@ -52,7 +53,7 @@ const TutorLogin = () => {
       })
       .catch((error) => console.log("error", error));
 
-    setLoginState(def);
+    // setLoginState(def);
   };
   return (
     <>

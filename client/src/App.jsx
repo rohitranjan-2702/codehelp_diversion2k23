@@ -23,7 +23,13 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("user"))?.isAuthed || false
   );
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user"))?.name || ""
+  );
   const [userName, setUserName] = useState(
+    JSON.parse(localStorage.getItem("user"))?.name || ""
+  );
+  const [userEmail, setUserEmail] = useState(
     JSON.parse(localStorage.getItem("user"))?.name || ""
   );
   const [userType, setUserType] = useState(
@@ -41,8 +47,12 @@ function App() {
         value={{
           isLoggedIn,
           setIsLoggedIn,
+          user,
+          setUser,
           userName,
           setUserName,
+          userEmail,
+          setUserEmail,
           userType,
           setUserType,
           logout,
