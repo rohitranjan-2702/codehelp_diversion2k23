@@ -8,7 +8,7 @@ import SignUp from './page/SignUp';
 import Profile from './page/Profiletut';
 import Profilestudent from './page/Profilestudent';
 import Pricing from './component/Pricing';
-import Payment from './page/Payment';
+
 
 
 
@@ -26,9 +26,6 @@ function App() {
   <Route path="/profilestudent" element={<Profilestudent/>}/>
   </Routes>
   <Pricing/>
- <Payment/>
-  
- 
   <Footer/>
 
   </BrowserRouter>
