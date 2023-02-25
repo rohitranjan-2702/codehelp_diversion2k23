@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route} from "react-router-dom"
 import Signup from '../page/SignUp'
-// import logo from "./assets/logo.png"
+
 
 const Header = () => {
 
