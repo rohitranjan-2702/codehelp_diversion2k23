@@ -9,7 +9,7 @@ const def = {
 
 const TutorLogin = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setUserEmail, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
+  const { setUserName, setUserEmail, setUserSkills, setUserEdu, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -41,6 +41,8 @@ const TutorLogin = () => {
         setUserType(result.type);
         setUserId(result._id);
         setUserEmail(result.email);
+        setUserSkills(result.skills);
+        setUserEdu(result.education);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
@@ -49,6 +51,7 @@ const TutorLogin = () => {
             name: result.name,
             isAuthed: true,
             type: result.type,
+            email: result.email
           })
         );
         navigate("/profileteacher");

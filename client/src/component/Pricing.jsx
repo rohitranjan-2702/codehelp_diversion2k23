@@ -26,7 +26,7 @@ const Pricing = () => {
 			return
 		}
 
-		const data = await fetch('http://localhost:3001/razorpay', { method: 'POST' }).then((t) =>
+		const data = await fetch('http://localhost:5000/razorpay', { method: 'POST' }).then((t) =>
 			t.json()
 		)
 
@@ -39,7 +39,7 @@ const Pricing = () => {
 			order_id: data.id,
 			name: 'Donation',
 			description: 'Thank you for nothing. Please give us some money',
-			image: 'http://localhost:3001/logo.svg',
+			image: 'http://localhost:5000/logo.svg',
 			handler: function (response) {
 				alert(response.razorpay_payment_id)
 				alert(response.razorpay_order_id)
