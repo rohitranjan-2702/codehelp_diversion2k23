@@ -59,15 +59,10 @@ const Pricing = () => {
     const plans = [
         {
             title: "Basic plan",
-            price: 12,
+            price: 5.99,
             features: [
                 "Curabitur faucibus",
-                "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
-                "Suspendisse a leo",
-                "Praesent quis venenatis ipsum",
-                "Duis non diam vel tortor",
+                
     
             ],
         },
@@ -104,11 +99,11 @@ const Pricing = () => {
         <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
             <div className='relative max-w-xl mx-auto sm:text-center'>
                 <h3 className='text-gray-800 text-3xl font-semibold sm:text-4xl'>
-                    Pricing for all sizes
+                    Pricing
                 </h3>
                 <div className='mt-3 max-w-xl'>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur consequat nunc.
+                        Ask more doubts, add your subscription now.
                     </p>
                 </div>
             </div>
@@ -148,7 +143,7 @@ const Pricing = () => {
                                 onClick={displayRazorpay}
 					            target="_blank"
 					            rel="noopener noreferrer">
-                                    Get Started
+                                    Buy 
                                 </button>
                             </div>
                         </div>
