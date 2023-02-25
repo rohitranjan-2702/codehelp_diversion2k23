@@ -50,7 +50,23 @@ const Signuptut = () => {
               hasSelectAll={false}
             />
           </div>
-          <div class="flex justify-center">
+         
+ <div className="group relative z-0 mb-6 w-full">
+ <p class="m-5">Passoword</p>
+              <input
+                type="password"
+                name="password"
+                id="floating_password"
+                class="w-full p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
+                placeholder=" "
+                required
+                // onChange={(e) => onInputChange(e)}
+              />
+             
+                
+              
+            </div>
+            <div class="flex justify-center">
 <button type="button" class=" mt-5 align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">SignUp</button>
 </div>
         </div>
