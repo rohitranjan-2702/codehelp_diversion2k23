@@ -34,7 +34,7 @@ const Signup = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/users/register", requestOptions)
+    fetch("http://localhost:5000/user/register", requestOptions)
       .then((response) => {
         // if (response.status !== 200) {
         //   throw new Error("something went wrong");
