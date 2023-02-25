@@ -1,6 +1,60 @@
-import React from 'react'
+import React,{useState} from 'react'
+
+function loadScript(src) {
+	return new Promise((resolve) => {
+		const script = document.createElement('script')
+		script.src = src
+		script.onload = () => {
+			resolve(true)
+		}
+		script.onerror = () => {
+			resolve(false)
+		}
+		document.body.appendChild(script)
+	})
+}
+const _DEV_ = document.domain === 'localhost'
 
 const Pricing = () => {
+    const [name, setName] = useState('Mehul')
+
+	async function displayRazorpay() {
+		const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js')
+
+		if (!res) {
+			alert('Razorpay SDK failed to load. Are you online?')
+			return
+		}
+
+		const data = await fetch('http://localhost:3001/razorpay', { method: 'POST' }).then((t) =>
+			t.json()
+		)
+
+		console.log(data)
+
+		const options = {
+			key: _DEV_ ? 'rzp_test_35zy3Hqp4Jtv6M' : 'PRODUCTION_KEY',
+			currency: data.currency,
+			amount: data.amount.toString(),
+			order_id: data.id,
+			name: 'Donation',
+			description: 'Thank you for nothing. Please give us some money',
+			image: 'http://localhost:3001/logo.svg',
+			handler: function (response) {
+				alert(response.razorpay_payment_id)
+				alert(response.razorpay_order_id)
+				alert(response.razorpay_signature)
+			},
+			prefill: {
+				name,
+				email: 'sdfdsjfh2@ndsfdf.com',
+				phone_number: '9899999999'
+			}
+		}
+		const paymentObject = new window.Razorpay(options)
+		paymentObject.open()
+	}
+
 
     const plans = [
         {
@@ -90,7 +144,10 @@ const Pricing = () => {
                                 }
                             </ul>
                             <div className="flex-1 flex items-end">
-                                <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700'>
+                                <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700'
+                                onClick={displayRazorpay}
+					            target="_blank"
+					            rel="noopener noreferrer">
                                     Get Started
                                 </button>
                             </div>
