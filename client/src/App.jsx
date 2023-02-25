@@ -16,7 +16,12 @@ import ProtectedRoutes from "./component/ProtectedRoute";
 import ProtectedStudRoutes from "./component/ProtectedStudRoute";
 import ProtectedTeachRoutes from "./component/ProtectedTeachRoute";
 import Signuptut from "./page/Signuptut";
+<<<<<<< HEAD
 import Feedbackpage from "./component/Feedbackpage";
+=======
+import Logintut from "./page/Logintut"
+import Feedbackpage from "./component/Feedbackpage"
+>>>>>>> 86979a33b331823cb2b02bcded38151578840418
 import TutorLogin from "./page/TutorLogin";
 import StudentDoubt from "./page/StudentDoubt";
 import TeacherDoubt from "./page/TeacherDoubt";
@@ -25,9 +30,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
     JSON.parse(localStorage.getItem("user"))?.isAuthed || false
   );
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useState(JSON.parse(localStorage.getItem("user"))?.id || "");
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || ""
+  );
   const [userName, setUserName] = useState(
     JSON.parse(localStorage.getItem("user"))?.name || ""
+  );
+  const [userEmail, setUserEmail] = useState(
+    JSON.parse(localStorage.getItem("user"))?.email || ""
   );
   const [userType, setUserType] = useState(
     JSON.parse(localStorage.getItem("user"))?.type || ""
@@ -44,8 +55,12 @@ function App() {
         value={{
           isLoggedIn,
           setIsLoggedIn,
+          user,
+          setUser,
           userName,
           setUserName,
+          userEmail,
+          setUserEmail,
           userType,
           setUserType,
           userId,
@@ -57,6 +72,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logintut" element={<Logintut />} />
           <Route path="/tutor/login" element={<TutorLogin />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signuptut" element={<Signuptut />} />

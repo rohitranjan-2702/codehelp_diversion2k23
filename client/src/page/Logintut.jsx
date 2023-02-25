@@ -1,15 +1,19 @@
-import React, { useState, useContext } from "react";
+import React,{useState, useContext} from "react";
+// import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
 const def = {
-  email: "",
-  password: "",
+    name: "",
+    email: "",
+    password: "",
+    skill:[],
+    education:"",
 };
 
-const TutorLogin = () => {
+const Logintut = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setUserEmail, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
+  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -24,6 +28,9 @@ const TutorLogin = () => {
     var urlencoded = new URLSearchParams();
     urlencoded.append("email", loginstate.email);
     urlencoded.append("password", loginstate.password);
+    urlencoded.append("password", loginstate.password);
+    urlencoded.append("skills", loginstate.ashu);
+    urlencoded.append("education", loginstate.education);
 
     var requestOptions = {
       method: "POST",
@@ -39,18 +46,16 @@ const TutorLogin = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
-        setUserId(result._id);
-        setUserEmail(result.email);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
           JSON.stringify({
-            id: result._id,
             name: result.name,
             isAuthed: true,
             type: result.type,
           })
         );
+
         navigate("/profileteacher");
       })
       .catch((error) => console.log("error", error));
@@ -61,7 +66,7 @@ const TutorLogin = () => {
     <>
       <div className="m-0 flex h-[550px] max-w-full items-center justify-center rounded-md bg-slate-200">
         <div className="md:h-[350px] md:w-[350px] lg:h-[400px] lg:w-[400px]">
-          <h2 className="mb-4 text-2xl font-semibold ">LOGIN AS A TUTOR</h2>
+          <h2 className="mb-4 text-2xl font-semibold ">LOGIN</h2>
 
           <form>
             <div className="mb-6">
@@ -112,4 +117,4 @@ const TutorLogin = () => {
   );
 };
 
-export default TutorLogin;
+export default Logintut;

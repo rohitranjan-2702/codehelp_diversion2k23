@@ -10,8 +10,7 @@ const def = {
 
 const Login = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setIsLoggedIn, setUserType, setUserId } =
-    useContext(LoginContext);
+  const { setUserName, setUserEmail, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -42,6 +41,7 @@ const Login = () => {
         setUserName(result.name);
         setUserType(result.type);
         setUserId(result._id);
+        setUserEmail(result.email);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
@@ -50,6 +50,7 @@ const Login = () => {
             name: result.name,
             isAuthed: true,
             type: result.type,
+            email: result.email
           })
         );
 
