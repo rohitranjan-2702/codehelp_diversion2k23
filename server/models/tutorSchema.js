@@ -14,6 +14,7 @@ const tutorSchema=new Schema({
     password:{
         type: String,
         required: true,
+        unique:true,
     },
     skills:{
         type:String,
@@ -26,4 +27,4 @@ const tutorSchema=new Schema({
 },{ timeStamps: true }
 )
 
-module.exports = mongoose.model("tutors", tutorSchema);
+module.exports = mongoose.model("tutor", tutorSchema);
