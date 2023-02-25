@@ -5,8 +5,8 @@ const {registerTeacher,loginTeacher,getTeacher} = require("../controllers/tutorC
 
 const router = express.Router();
 
-router.get("/signup", protect, registerTeacher);
-router.post("/login", protect, loginTeacher);
-router.delete("/profile", protect, getTeacher);
+router.post("/register", registerTeacher);
+router.post("/login", loginTeacher);
+router.get("/profile", protect, getTeacher);
 
 module.exports = router;

@@ -7,6 +7,9 @@ import Doubt from './page/Doubt';
 import SignUp from './page/SignUp';
 import Profile from './page/Profiletut';
 import Profilestudent from './page/Profilestudent';
+import Pricing from './component/Pricing';
+import Payment from './page/Payment';
+
 function App() {
   return (
   
@@ -17,9 +20,11 @@ function App() {
   <Route path="/Doubt" element={<Doubt/>}/>
   <Route path="/signup" element={<SignUp/>}/>
   <Route path="/profile" element={<Profile/>}/>
+  <Route path="/pricing" element={<Pricing/>}/>
   <Route path="/profilestudent" element={<Profilestudent/>}/>
   </Routes>
- 
+  <Pricing/>
+ <Payment/>
   <Footer/>
 
   </BrowserRouter>
