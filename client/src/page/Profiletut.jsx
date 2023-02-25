@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState} from "react";
 import { LoginContext } from "../contexts/LoginContext";
-// import axios from "axios";
-
-// const baseURL ="http://localhost:5000/user/profile"
 
 const Profiletut = () => {
 
+
   const {userName} = useContext(LoginContext);
   const {userEmail} = useContext(LoginContext);
-  const {user} = useContext(LoginContext);
+  const {userEdu} = useContext(LoginContext);
+  const {userSkills} = useContext(LoginContext);
 
   useEffect( (e) => {
     var requestOptions = {
@@ -16,7 +15,7 @@ const Profiletut = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/user/profile", requestOptions)
+    fetch("http://localhost:5000/teacher/profile", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
@@ -28,16 +27,6 @@ const Profiletut = () => {
 
   });
 
-
-  // const [user, setUser] = useState(null);
-
-  // React.useEffect(() => {
-  //   axios.get(baseURL).then((response) => {
-  //     setUser(response.data);
-  //   });
-  // }, []);
-
-  // if (!user) return null;
 
   return (
     <>
@@ -57,8 +46,8 @@ const Profiletut = () => {
             <div class="m-4 flex justify-center p-4 bg- w-full">
               <div class="rounded-3xl border w-full p-10 m-4 text-black shadow-xl">
                 <p class="mb-3">Email: {userEmail}</p>
-                <p class="mb-3"> Skills: HTML, CSS</p>
-                <p class="mb-3">Education: HIT, Kolkata</p>
+                <p class="mb-3"> Skills: {userSkills}</p>
+                <p class="mb-3">Education: {userEdu} </p>
                 <p class="mb-3">Ratings: 3.5</p>
                 <p class="mb-3"> Doubt Solved: 20</p>
               </div>
