@@ -6,6 +6,16 @@ require("dotenv").config();
 const teacherRoute = require("./routes/teacherRoute");
 const userRoute = require("./routes/userRoutes");
 const agoraRoute = require("./routes/agoraRoute");
+const paymentRoute = require("./routes/paymentRoute");
+// FOR PAYMENT GATWAY
+const path = require("path");
+const shortid = require("shortid");
+const Razorpay = require("razorpay");
+
+const razorpay = new Razorpay({
+  key_id: "rzp_test_35zy3Hqp4Jtv6M",
+  key_secret: "0LDDihu5S8UgdBS4o6KvL4Fj",
+});
 
 const port = 3001;
 
@@ -21,6 +31,7 @@ app.get("/", (req, res) => {
 app.use("/teacher", teacherRoute);
 app.use("/user", userRoute);
 app.use("/agora", agoraRoute);
+app.use("/payment", paymentRoute);
 
 app.use(errorMiddleware);
 

@@ -1,14 +1,17 @@
 import React from 'react'
 import image from "../picture/photo.jpeg"
+import Pricing from '../component/Pricing'
+
+
+
 const Home = () => {
   return (
     <>
     <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
     <div class="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0 grid justify-items-center">
-      {/* <h1 class="title-font font-medium text-3xl text-gray-900">Slow-carb next level shoindcgoitch ethical authentic, poko scenester</h1>
-      <p class="leading-relaxed mt-4">Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan tousled etsy austin.</p> */}
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={image}/>
+    {/* <Lottie animationData={groovyWalkAnimation} />; */}
+    <img src="https://res.cloudinary.com/dlmgrochr/image/upload/v1677309948/image-removebg-preview_11_cxupug.png" alt="img" />
     </div>
     <div class="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
       <h2 class="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
@@ -25,6 +28,8 @@ const Home = () => {
     </div>
   </div>
 </section>
+
+<Pricing/>
    
    </>
   )

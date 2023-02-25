@@ -1,12 +1,12 @@
 const express = require("express");
-const protect = require("../middleware/authMiddleware");
+const protect2 = require("../middleware/authMiddleware");
 const {registerTeacher,loginTeacher,getTeacher} = require("../controllers/tutorController");
 
 
 const router = express.Router();
 
-router.get("/signup", protect, registerTeacher);
-router.post("/login", protect, loginTeacher);
-router.delete("/profile", protect, getTeacher);
+router.post("/register", registerTeacher);
+router.post("/login", loginTeacher);
+router.get("/profile", protect2, getTeacher);
 
 module.exports = router;

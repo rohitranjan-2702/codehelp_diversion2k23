@@ -3,25 +3,25 @@ import React from 'react'
 const Footer = () => {
   return (
     <>
-    <footer className="bg-[#1855cb] antialiased">
+    <footer className="bg-[#e9e9e9] antialiased">
       <div className="mx-auto px-16 py-20">
         <div className="mt-8 grid w-full grid-cols-1 gap-8 sm:grid-cols-3">
           <div className="flex items-center justify-center">
             <img
-              className="object-contain object-center"
-              src="https://i.ibb.co/cchk5Mp/logo.png"
+              className="object-contain object-center h-6 mr-3 sm:h-16"
+              src="https://res.cloudinary.com/dlmgrochr/image/upload/v1677308464/image-removebg-preview_10_ewg8zc.png"
               alt=""
             />
           </div>
           <div className="flex items-center justify-center">
-            <p className="text-sm leading-4 text-white">
+            <p className="text-sm leading-4 text-black">
               &copy; 2023 codeHelp All Rights Reserved.
             </p>
           </div>
           <div className="flex items-center justify-center">
             <ul className="flex items-center justify-center gap-x-4">
               <li className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300">
-                <div className="text-white">
+                <div className="text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
               </li>
               <li className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300">
-                <div className="text-white">
+                <div className="text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"
@@ -48,7 +48,7 @@ const Footer = () => {
                 </div>
               </li>
               <li className="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300">
-                <div className="text-white">
+                <div className="text-black">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="18"

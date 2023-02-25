@@ -7,8 +7,8 @@ const tutorModel = require("../models/tutorSchema");
 // @route: POST /users/register
 // @access: public
 const registerTeacher = expressAsyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
+  const { name, email, password,skills,education } = req.body;
+  if (!name || !email || !password||!skills||!education) {
     res.status(400);
     throw new Error("Enter all details");
   }
@@ -24,13 +24,17 @@ const registerTeacher = expressAsyncHandler(async (req, res) => {
     name,
     email,
     password: hashedPass,
+    skills,
+    education
   });
 
   res.json({
     _id: tutor._id,
     name: tutor.name,
     email: tutor.email,
-    token: generateJwt(tutor._id),
+    skills:tutor.skills,
+    education:tutor.education,
+    token: generateJwt(tutor._id)
   });
 });
 
@@ -52,6 +56,8 @@ const loginTeacher = expressAsyncHandler(async (req, res) => {
       name: tutor.name,
       email: tutor.email,
       token: generateJwt(tutor.id),
+      skills:tutor.skills,
+      education:tutor.education
     });
   } else {
     res.status(400);
@@ -63,11 +69,13 @@ const loginTeacher = expressAsyncHandler(async (req, res) => {
 // @route: GET /users/me
 // @access: private
 const getTeacher = expressAsyncHandler(async (req, res) => {
-  const { name, email, _id } = req.user;
+  const { name, email, _id,skills,education } = req.user;
   res.status(200).json({
     id: _id,
     name,
     email,
+    skills,
+    education
   });
 });
 
@@ -76,7 +84,7 @@ const generateJwt = (id) => {
 };
 
 module.exports = {
-  loginTeacher,
   registerTeacher,
+  loginTeacher,
   getTeacher,
 };
