@@ -25,7 +25,7 @@ function App() {
   <Route path="/pricing" element={<Pricing/>}/>
   <Route path="/profilestudent" element={<Profilestudent/>}/>
   </Routes>
-  <Pricing/>
+  
   <Footer/>
 
   </BrowserRouter>
