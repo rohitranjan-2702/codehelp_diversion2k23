@@ -23,7 +23,7 @@ function StudentDoubt() {
       }
       console.log(`question answered ${JSON.stringify(payload)}`);
       resultRef.current.innerText = "Video call opening...";
-      handleMoveToCall(payload.teacherId, payload.studentId);
+      await handleMoveToCall(payload.teacherId, payload.studentId);
       navigate("/video");
     });
   });

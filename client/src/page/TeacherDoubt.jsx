@@ -12,11 +12,11 @@ function TeacherDoubt() {
   useEffect(() => {
     socket.emit("teacherOnline", { teacherId });
 
-    socket.on("moveToCall", (payload) => {
+    socket.on("moveToCall", async (payload) => {
       const studentId = payload.studentId;
       const teacherId = payload.teacherId;
       console.log(`question answered ${studentId} ${teacherId}`);
-      handleMoveToCall(studentId, teacherId);
+      await handleMoveToCall(studentId, teacherId);
       navigate("/video");
     });
 
