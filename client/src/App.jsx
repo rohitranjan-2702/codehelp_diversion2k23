@@ -6,6 +6,7 @@ import Footer from './component/Footer';
 import Doubt from './page/Doubt';
 import Profile from './page/Profile';
 import SignUp from './page/SignUp';
+import DoubtRender from './page/DoubtRender';
 
 
 
@@ -19,6 +20,7 @@ function App() {
   <Route path="/doubt" element={<Doubt/>}/>
   <Route path="/signup" element={<SignUp/>}/>
   <Route path="/profile" element={<Profile/>}/>
+  <Route path="/doubtSection" element={<DoubtRender/>}/>
   </Routes>
   
  
