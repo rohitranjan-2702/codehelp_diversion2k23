@@ -69,7 +69,7 @@ const loginTeacher = expressAsyncHandler(async (req, res) => {
 // @route: GET /users/me
 // @access: private
 const getTeacher = expressAsyncHandler(async (req, res) => {
-  const { name, email, _id } = req.user;
+  const { name, email, _id,skills,education } = req.user;
   res.status(200).json({
     id: _id,
     name,
