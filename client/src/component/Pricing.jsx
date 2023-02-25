@@ -59,23 +59,26 @@ const Pricing = () => {
     const plans = [
         {
             name: "Basic plan",
+            pack: 100,
             price: 5.99,
             features: [
-                "Curabitur faucibus",
+                "MAX. 100 doubts",
             ],
         },
         {
             name: "Gold",
+            pack: 200,
             price: 11.99,
             features: [
-                "massa ut pretium maximus",
+                "MAX. 200 doubts",
             ],
         },
         {
             name: "Platinum",
+            pack: 500,
             price: 29.99,
             features: [
-                "Duis non diam vel tortor",
+                "MAX. 500 doubts",
             ],
         },
     ];
@@ -102,7 +105,8 @@ const Pricing = () => {
                                     {item.name}
                                 </span>
                                 <div className='mt-4 text-gray-800 text-3xl font-semibold'>
-                                    ${item.price} <span className="text-xl text-gray-600 font-normal">/mo</span>
+                                    ${item.price} 
+                                    {/* <span className="text-xl text-gray-600 font-normal">for {item.pack} doubts</span> */}
                                 </div>
                             </div>
                             <ul className='py-8 space-y-3'>
