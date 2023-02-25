@@ -10,6 +10,8 @@ import Profilestudent from './page/Profilestudent';
 import Pricing from './component/Pricing';
 import Payment from './page/Payment';
 
+
+
 function App() {
   return (
   
@@ -17,7 +19,7 @@ function App() {
     <Header/>
     <Routes>
   <Route path="/" element={<Home/>}/>
-  <Route path="/Doubt" element={<Doubt/>}/>
+  <Route path="/doubt" element={<Doubt/>}/>
   <Route path="/signup" element={<SignUp/>}/>
   <Route path="/profile" element={<Profile/>}/>
   <Route path="/pricing" element={<Pricing/>}/>
@@ -25,6 +27,8 @@ function App() {
   </Routes>
   <Pricing/>
  <Payment/>
+  
+ 
   <Footer/>
 
   </BrowserRouter>
