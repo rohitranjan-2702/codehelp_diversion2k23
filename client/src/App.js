@@ -1,16 +1,25 @@
 import './App.css';
-import { BrowserRouter,Router,Route } from 'react-router-dom';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './page/Home';
 import Header from './component/Header';
 import Footer from './component/Footer';
+import Doubt from './page/Doubt';
+import SignUp from './page/SignUp';
 function App() {
   return (
-    <>
-    <Header/>
-  <Home/>
-  <Footer/>
   
-  </>
+    <BrowserRouter>
+    <Header/>
+    <Routes>
+  <Route path="/" element={<Home/>}/>
+  <Route path="/Doubt" element={<Doubt/>}/>
+  <Route path="/signup" element={<SignUp/>}/>
+  </Routes>
+ 
+  <Footer/>
+
+  </BrowserRouter>
+  
   );
 }
 
