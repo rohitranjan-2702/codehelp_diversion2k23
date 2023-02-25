@@ -15,6 +15,8 @@ import { LoginContext } from "./contexts/LoginContext";
 import ProtectedRoutes from "./component/ProtectedRoute";
 import ProtectedStudRoutes from "./component/ProtectedStudRoute";
 import ProtectedTeachRoutes from "./component/ProtectedTeachRoute";
+import Signuptut from "./page/Signuptut";
+import Feedbackpage from "./component/Feedbackpage"
 import TutorLogin from "./page/TutorLogin";
 
 function App() {
@@ -52,16 +54,18 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/tutor/login" element={<TutorLogin />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signuptut" element={<Signuptut />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/profile" element={<Profile />} />
             <Route element={<ProtectedStudRoutes />}>
+              <Route path="/profilestudent" element={<Profilestudent />} />
               <Route path="/doubt" element={<Doubt />} />
+              <Route path="/feedback" element={<Feedbackpage />} />
             </Route>
             <Route element={<ProtectedTeachRoutes />}>
+              <Route path="/profileteacher" element={<Profile />} />
               <Route path="/doubtSection" element={<DoubtRender />} />
             </Route>
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/profilestudent" element={<Profilestudent />} />
           </Route>
         </Routes>
         <Footer />

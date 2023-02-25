@@ -48,7 +48,7 @@ const TutorLogin = () => {
             type: result.type,
           })
         );
-        navigate("/profile");
+        navigate("/profileteacher");
       })
       .catch((error) => console.log("error", error));
 

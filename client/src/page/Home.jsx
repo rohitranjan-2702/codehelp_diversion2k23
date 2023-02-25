@@ -1,6 +1,5 @@
-import React from "react";
-import image from "../picture/photo.jpeg";
-import Pricing from "../component/Pricing";
+import React from 'react'
+import Pricing from '../component/Pricing'
 
 const Home = () => {
   return (

@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React,{useState, useContext} from "react";
+// import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
@@ -48,11 +49,12 @@ const Login = () => {
             type: result.type,
           })
         );
-        navigate("/profile");
+
+        navigate("/profilestudent");
       })
       .catch((error) => console.log("error", error));
 
-    setLoginState(def);
+    // setLoginState(def);
   };
   return (
     <>
