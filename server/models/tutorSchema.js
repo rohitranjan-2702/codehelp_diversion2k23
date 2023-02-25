@@ -1,6 +1,12 @@
 const mongoose=require('mongoose');
 const Schema =mongoose.Schema;
 
+const SkillSchema=new Schema({
+    skill:{
+        type:String,
+        required:true,
+    }
+})
 const tutorSchema=new Schema({
     name:{
         type:String,
@@ -16,14 +22,11 @@ const tutorSchema=new Schema({
         required: true,
         unique:true,
     },
-    skills:{
-        type:String,
-        required:true,
-    },
+    skills:[SkillSchema],
     education:{
         type:String,
         required:true,
-    }
+    }    
 },{ timeStamps: true }
 )
 
