@@ -1,5 +1,7 @@
 import './App.css';
+import React,{useState} from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import { LoginContext } from "./contexts/LoginContext";
 import Home from './page/Home';
 import Header from './component/Header';
 import Footer from './component/Footer';
@@ -16,9 +18,14 @@ import Feedbackpage from './component/Feedbackpage';
 
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
 
   return (
     <BrowserRouter>
+     <LoginContext.Provider
+          value={{ isLoggedIn, setIsLoggedIn, userName, setUserName }}
+        >
     <Header/>
     <Routes>
   <Route path="/" element={<Home/>}/>
@@ -34,7 +41,7 @@ function App() {
   </Routes>
   
   <Footer/>
-  
+  </LoginContext.Provider>
   </BrowserRouter>
   
   );
