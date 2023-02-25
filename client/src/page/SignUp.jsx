@@ -94,7 +94,7 @@ const Signup = () => {
                 Email address
               </label>
             </div>
-            <div className="group relative z-0 mb-6 w-full">
+            {/* <div className="group relative z-0 mb-6 w-full">
               <input
                 type="password"
                 name="password"
@@ -127,8 +127,11 @@ const Signup = () => {
               >
                 Confirm password
               </label>
+            </div> */}
+            <div class="group relative z-0 mb-6 w-full flex">
+            
+             
             </div>
-
             <button
               type="submit"
               className="w-full rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto"
