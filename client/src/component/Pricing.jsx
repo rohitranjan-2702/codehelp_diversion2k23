@@ -58,37 +58,23 @@ const Pricing = () => {
 
     const plans = [
         {
-            title: "Basic plan",
+            name: "Basic plan",
             price: 5.99,
             features: [
                 "Curabitur faucibus",
-                
-    
             ],
         },
         {
-            name: "Startup",
-            price: 35,
+            name: "Gold",
+            price: 11.99,
             features: [
-                "Curabitur faucibus",
                 "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
-                "Suspendisse a leo",
-                "Praesent quis venenatis ipsum",
-                "Duis non diam vel tortor",
             ],
         },
         {
-            name: "Enterprise",
-            price: 60,
+            name: "Platinum",
+            price: 29.99,
             features: [
-                "Curabitur faucibus",
-                "massa ut pretium maximus",
-                "Sed posuere nisi",
-                "Pellentesque eu nibh et neque",
-                "Suspendisse a leo",
-                "Praesent quis venenatis ipsum",
                 "Duis non diam vel tortor",
             ],
         },
