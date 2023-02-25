@@ -5,6 +5,8 @@ import Header from './component/Header';
 import Footer from './component/Footer';
 import Doubt from './page/Doubt';
 import SignUp from './page/SignUp';
+import Profile from './page/Profiletut';
+import Profilestudent from './page/Profilestudent';
 function App() {
   return (
   
@@ -14,6 +16,8 @@ function App() {
   <Route path="/" element={<Home/>}/>
   <Route path="/Doubt" element={<Doubt/>}/>
   <Route path="/signup" element={<SignUp/>}/>
+  <Route path="/profile" element={<Profile/>}/>
+  <Route path="/profilestudent" element={<Profilestudent/>}/>
   </Routes>
  
   <Footer/>
