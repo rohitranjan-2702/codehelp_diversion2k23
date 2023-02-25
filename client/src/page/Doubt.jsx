@@ -2,21 +2,19 @@ import React, { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 
 const options = [
-    { label: "HTML", value: "html" },
-    { label: "CSS", value: "css" },
-    { label: "JAVASCRIPT", value: "javascript"},
-    { label: "REACTJS", value: "reactjs" },
-    { label: "NODEJS", value: "nodejs" },
-    { label: "FIREBASE", value: "firebase" },
-    // { label: "JAVASCRIPT", value: "strawberry", disabled: true },
-  ];
+  { label: "HTML", value: "html" },
+  { label: "CSS", value: "css" },
+  { label: "JAVASCRIPT", value: "javascript" },
+  { label: "REACTJS", value: "reactjs" },
+  { label: "NODEJS", value: "nodejs" },
+  { label: "FIREBASE", value: "firebase" },
+  // { label: "JAVASCRIPT", value: "strawberry", disabled: true },
+];
 
 const Doubt = () => {
-
-    const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState([]);
 
   return (
-    
     <>
     <h1 class="flex justify-center mt-10 mb-10 font-bold text-4xl flex-wrap">Ask your Doubt</h1>
 <form>
@@ -53,13 +51,19 @@ const Doubt = () => {
                   <span class="sr-only">Upload image</span>
               </button>
           </div>
-      </div>
-  </div>
-</form>
-
-
-   </>
-  )
-}
+          <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+            <button
+              type="submit"
+              class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+            >
+              ASK
+            </button>
+           </div>
+        </div>
+        </div>
+      </form>
+    </>
+  );
+};
 
 export default Doubt;

@@ -1,5 +1,4 @@
-import React,{useState, useContext} from "react";
-// import React, { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
 
@@ -8,7 +7,7 @@ const def = {
   password: "",
 };
 
-const Login = () => {
+const TutorLogin = () => {
   const [loginstate, setLoginState] = useState(def);
   const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
   const navigate = useNavigate();
@@ -33,7 +32,7 @@ const Login = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/user/login", requestOptions)
+    fetch("http://localhost:5000/teacher/login", requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
@@ -49,18 +48,17 @@ const Login = () => {
             type: result.type,
           })
         );
-
-        navigate("/profilestudent");
+        navigate("/profileteacher");
       })
       .catch((error) => console.log("error", error));
 
-    // setLoginState(def);
+    setLoginState(def);
   };
   return (
     <>
       <div className="m-0 flex h-[550px] max-w-full items-center justify-center rounded-md bg-slate-200">
         <div className="md:h-[350px] md:w-[350px] lg:h-[400px] lg:w-[400px]">
-          <h2 className="mb-4 text-2xl font-semibold ">LOGIN</h2>
+          <h2 className="mb-4 text-2xl font-semibold ">LOGIN AS A TUTOR</h2>
 
           <form>
             <div className="mb-6">
@@ -111,4 +109,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default TutorLogin;

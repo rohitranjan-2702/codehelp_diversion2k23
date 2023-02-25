@@ -24,11 +24,11 @@ const Signuptut = () => {
             class=" w-full p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
             placeholder="First name"
           />
-          <p class="m-5">Enter Your lname</p>
+          <p class="m-5">Education</p>
           <input
             type="text"
             class="w-full  p-3 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600"
-            placeholder="last name"
+            placeholder="education"
           />
           <p class="m-5">Enter Email</p>
           <input
