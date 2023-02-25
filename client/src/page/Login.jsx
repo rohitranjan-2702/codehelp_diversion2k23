@@ -1,4 +1,4 @@
-import React,{useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 // import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../contexts/LoginContext";
@@ -10,7 +10,8 @@ const def = {
 
 const Login = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const { setUserName, setIsLoggedIn, setUserType, setUserId } =
+    useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -40,10 +41,12 @@ const Login = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
+        setUserId(result._id);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
           JSON.stringify({
+            id: result._id,
             name: result.name,
             isAuthed: true,
             type: result.type,
