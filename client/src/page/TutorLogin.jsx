@@ -9,7 +9,7 @@ const def = {
 
 const TutorLogin = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const { setUserName, setUserEmail, setUserSkills, setUserEdu, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -39,20 +39,26 @@ const TutorLogin = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
+        setUserId(result._id);
+        setUserEmail(result.email);
+        setUserSkills(result.skills);
+        setUserEdu(result.education);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
           JSON.stringify({
+            id: result._id,
             name: result.name,
             isAuthed: true,
             type: result.type,
+            email: result.email
           })
         );
         navigate("/profileteacher");
       })
       .catch((error) => console.log("error", error));
 
-    setLoginState(def);
+    // setLoginState(def);
   };
   return (
     <>

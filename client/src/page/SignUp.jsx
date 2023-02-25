@@ -10,7 +10,8 @@ const def = {
 };
 const Signup = () => {
   const [signstate, setSignState] = useState(def);
-  const { setUserName, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const { setUserName, setIsLoggedIn, setUserType, setUserId } =
+    useContext(LoginContext);
   const navigate = useNavigate();
 
   const onInputChange = (e) => {
@@ -34,7 +35,7 @@ const Signup = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/teacher/register", requestOptions)
+    fetch("http://localhost:5000/user/register", requestOptions)
       .then((response) => {
         // if (response.status !== 200) {
         //   throw new Error("something went wrong");
@@ -46,10 +47,12 @@ const Signup = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
+        setUserId(result._id);
         localStorage.setItem("token", result.token);
         localStorage.setItem(
           "user",
           JSON.stringify({
+            id: result._id,
             name: result.name,
             isAuthed: true,
             type: result.type,
