@@ -9,7 +9,7 @@ const def = {
 
 const TutorLogin = () => {
   const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setUserEmail, setUserSkills, setUserEdu, setIsLoggedIn, setUserType } = useContext(LoginContext);
+  const { setUserName, setUserEmail, setUserSkills, setUserEdu, setIsLoggedIn, setUserType, setUserId } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
@@ -39,6 +39,7 @@ const TutorLogin = () => {
         setIsLoggedIn(true);
         setUserName(result.name);
         setUserType(result.type);
+        setUserId(result._id);
         setUserEmail(result.email);
         setUserSkills(result.skills);
         setUserEdu(result.education);
@@ -46,6 +47,7 @@ const TutorLogin = () => {
         localStorage.setItem(
           "user",
           JSON.stringify({
+            id: result._id,
             name: result.name,
             isAuthed: true,
             type: result.type,
