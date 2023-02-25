@@ -1,19 +1,20 @@
-import React, { useState, useContext } from "react";
+import React from "react";
+// import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { LoginContext } from "../Contexts/LoginContext";
+// import { LoginContext } from "../Contexts/LoginContext";
 
-const def = {
-  email: "",
-  password: "",
-};
+// const def = {
+//   email: "",
+//   password: "",
+// };
 
 const Login = () => {
-  const [loginstate, setLoginState] = useState(def);
-  const { setUserName, setIsLoggedIn } = useContext(LoginContext);
+  // const [loginstate, setLoginState] = useState(def);
+  // const { setUserName, setIsLoggedIn } = useContext(LoginContext);
   const navigate = useNavigate();
 
   const inputChange = (e) => {
-    setLoginState({ ...loginstate, [e.target.name]: e.target.value });
+    // setLoginState({ ...loginstate, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -22,28 +23,28 @@ const Login = () => {
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
     var urlencoded = new URLSearchParams();
-    urlencoded.append("email", loginstate.email);
-    urlencoded.append("password", loginstate.password);
+    // urlencoded.append("email", loginstate.email);
+    // urlencoded.append("password", loginstate.password);
 
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: urlencoded,
-      redirect: "follow",
-    };
+    // var requestOptions = {
+    //   method: "POST",
+    //   headers: myHeaders,
+    //   body: urlencoded,
+    //   redirect: "follow",
+    // };
 
-    fetch("http://localhost:5000/users/login", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        setIsLoggedIn(true);
-        setUserName(result.name);
-        localStorage.setItem("token", result.token);
-        navigate("/dashboard");
-      })
-      .catch((error) => console.log("error", error));
+    // fetch("http://localhost:5000/users/login", requestOptions)
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //     setIsLoggedIn(true);
+    //     setUserName(result.name);
+    //     localStorage.setItem("token", result.token);
+    //     navigate("/dashboard");
+      // })
+      // .catch((error) => console.log("error", error));
 
-    setLoginState(def);
+    // setLoginState(def);
   };
   return (
     <>

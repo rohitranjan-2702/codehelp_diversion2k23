@@ -1,12 +1,10 @@
 import React from 'react'
-import {Route} from "react-router-dom"
-import Signup from '../page/SignUp'
-
+import { useNavigate } from "react-router-dom"
 
 const Header = () => {
 
   // const { isLoggedIn, setIsLoggedIn, setUserName } = useContext(LoginContext);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // const handleLogOut = () => {
   //   localStorage.removeItem("token");
@@ -40,13 +38,13 @@ const Header = () => {
               <div>
                 <button
                   className="text-md px-6 py-3 font-semibold text-blue-600 transition-all hover:text-blue-700 disabled:bg-gray-400"
-                  // onClick={() => navigate("/login")}
+                  onClick={() => navigate("/login")}
                 >
                   Login
                 </button>
                 <button
                   className="text-md rounded-full bg-blue-600 px-4 py-2 font-medium text-white transition-all hover:bg-blue-700 disabled:bg-gray-400"
-                  // onClick={() => navigate("/signup")}
+                  onClick={() => navigate("/signup")}
                 >
                   Sign Up
                 </button>

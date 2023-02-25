@@ -9,9 +9,6 @@ import DoubtRender from './page/DoubtRender';
 import Profile from './page/Profiletut';
 import Profilestudent from './page/Profilestudent';
 import Pricing from './component/Pricing';
-//import Login from './page/Login';
-import Feedbackpage from './component/Feedbackpage';
-import Signuptut from './page/Signuptut';
 
 
 
@@ -25,7 +22,6 @@ function App() {
   <Route path="/" element={<Home/>}/>
   <Route path="/doubt" element={<Doubt/>}/>
   <Route path="/signup" element={<SignUp/>}/>
-  {/* <Route path="/login" element={<Login/>}/> */}
   <Route path="/profile" element={<Profile/>}/>
   <Route path="/signuptut" element={<Signuptut />}/>
   <Route path="/doubtSection" element={<DoubtRender/>}/>
