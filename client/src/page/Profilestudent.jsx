@@ -7,23 +7,21 @@ const Profilestudent = () => {
   const {userEmail} = useContext(LoginContext);
   const {user} = useContext(LoginContext);
 
-useEffect( (e) => {
-    var requestOptions = {
-      method: "GET",
-      redirect: "follow",
-    };
+// useEffect( (e) => {
+    // var requestOptions = {
+    //   method: "GET",
+    //   redirect: "follow",
+    // };
 
-    fetch("http://localhost:5000/user/profile", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        localStorage.setItem("token", result.token);
-
-      })
-      .catch((error) => console.log("error", error));
+    // fetch("http://localhost:5000/user/profile", requestOptions)
+    //   .then((response) => response.json())
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((error) => console.log("error", error));
 
 
-  });
+  // });
 
   return (
     <>

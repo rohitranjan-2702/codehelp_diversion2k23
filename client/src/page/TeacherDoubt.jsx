@@ -5,6 +5,7 @@ const socket = io.connect("http://localhost:4000");
 
 function TeacherDoubt() {
   const teacherId = JSON.parse(localStorage.getItem("user")).id;
+  console.log(teacherId);
   const [questions, setQuestions] = useState([]);
   useEffect(() => {
     socket.emit("teacherOnline", { teacherId });

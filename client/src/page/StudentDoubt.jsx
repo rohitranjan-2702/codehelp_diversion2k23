@@ -6,24 +6,53 @@ const socket = io.connect("http://localhost:4000");
 
 function StudentDoubt() {
   const studentId = JSON.parse(localStorage.getItem("user")).id;
+  const authToken = localStorage.getItem("token");
   const [question, setQuestion] = useState("");
   const resultRef = useRef();
   useEffect(() => {
     socket.emit("studentConnected", { studentId });
 
-    socket.on("moveToCall", (payload) => {
+    socket.on("moveToCall", async (payload) => {
       if (studentId !== payload.studentId) {
         console.log(
           `studentId: ${studentId}, questionId: ${payload.studentId}`
         );
         throw new Error("questionid != studentid");
       }
-      console.log(`question answered ${payload}`);
+      console.log(`question answered ${JSON.stringify(payload)}`);
       resultRef.current.innerText = "Video call opening...";
-      handleMoveToCall();
+      handleMoveToCall(payload.teacherId, payload.studentId);
     });
   });
-  const handleMoveToCall = () => {}; //TODO: handle it
+  const handleMoveToCall = async (teacherId, studentId) => {
+    console.log(teacherId)
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer ${authToken}`);
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+    var urlencoded = new URLSearchParams();
+    urlencoded.append("teacherId", teacherId);
+    urlencoded.append("studentId", studentId);
+
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: urlencoded,
+      redirect: "follow",
+    };
+
+    const result = await fetch(
+      "http://localhost:5000/agora/CallCredentials",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+
+    console.log(result.appId, result.token, result.channel);
+    // return { appId, token, channel };
+  }; //TODO: handle it
+
   const sendQuestion = (e) => {
     e.preventDefault();
     socket.emit("questionAsked", { question, studentId });
