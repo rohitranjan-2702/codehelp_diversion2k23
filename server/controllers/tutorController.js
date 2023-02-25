@@ -8,6 +8,7 @@ const tutorModel = require("../models/tutorSchema");
 // @access: public
 const registerTeacher = expressAsyncHandler(async (req, res) => {
   const { name, email, password, skills, education } = req.body;
+  console.log(name, email, password, skills, education)
   if (!name || !email || !password || !skills || !education) {
     res.status(400);
     throw new Error("Enter all details");
