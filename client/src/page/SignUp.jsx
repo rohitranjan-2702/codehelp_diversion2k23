@@ -34,7 +34,7 @@ const Signup = () => {
       redirect: "follow",
     };
 
-    fetch("http://localhost:5000/users/register", requestOptions)
+    fetch("http://localhost:5000/user/register", requestOptions)
       .then((response) => {
         // if (response.status !== 200) {
         //   throw new Error("something went wrong");
@@ -52,7 +52,7 @@ const Signup = () => {
           isAuthed: true,
           type: result.type,
         });
-        navigate("/dashboard");
+        // navigate("/profilestudent");
       })
       .catch((error) => console.log("error", error));
 
