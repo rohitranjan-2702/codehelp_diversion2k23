@@ -86,7 +86,7 @@ function App() {
               <Route path="/profilestudent" element={<Profilestudent />} />
               {/* <Route path="/doubt" element={<Doubt />} /> */}
               <Route path="/doubt" element={<StudentDoubt />} />
-              <Route path="/feedback" element={<Feedbackpage />} />
+              <Route path="/feedback" element={ <Feedbackpage />} />
             </Route>
             <Route element={<ProtectedTeachRoutes />}>
               <Route path="/profileteacher" element={<Profile />} />
@@ -97,7 +97,7 @@ function App() {
           </Route>
           <Route path="/video" element={<VideoComponent />} />
         </Routes>
-        <Feedbackpage />
+        
         <Footer />
       </LoginContext.Provider>
     </BrowserRouter>

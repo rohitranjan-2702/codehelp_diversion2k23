@@ -1,7 +1,15 @@
 import React from 'react'
 import Rater from 'react-rater'
 import 'react-rater/lib/react-rater.css'
+import { useNavigate } from "react-router-dom";
+
+
 const Feedbackpage = () => {
+  const navigate=useNavigate();
+  const handleClick = () => {
+    alert("Rating is done");
+    navigate("/")
+  }
   return (
    <>
     <div class="m-10">
@@ -14,10 +22,10 @@ const Feedbackpage = () => {
     
     
 <div class="flex justify-center text-5xl text-amber-400 mb-4">
-<Rater total={5} rating={2} />
+<Rater total={5} rating={2}  />
 </div>
 <div class="flex justify-center">
-<button type="button" class="align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
+<button type="button" onClick={() => handleClick()} class="align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>
 </div>
     </div>
    </>
