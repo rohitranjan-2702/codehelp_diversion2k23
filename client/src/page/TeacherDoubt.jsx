@@ -12,11 +12,23 @@ function TeacherDoubt() {
   useEffect(() => {
     socket.emit("teacherOnline", { teacherId });
 
-    socket.on("moveToCall", (payload) => {
+    socket.on("removeQuestion", async (payload) => {
+      const studentId = payload.studentId;
+      console.log(` ${studentId} question answered by someone else`);
+      setQuestions([
+        ...questions.filter((questionObj) => {
+          if (questionObj.studentId === studentId) {
+            return false;
+          }
+        }),
+      ]);
+    });
+
+    socket.on("moveToCall", async (payload) => {
       const studentId = payload.studentId;
       const teacherId = payload.teacherId;
       console.log(`question answered ${studentId} ${teacherId}`);
-      handleMoveToCall(studentId, teacherId);
+      await handleMoveToCall(studentId, teacherId);
       navigate("/video");
     });
 
