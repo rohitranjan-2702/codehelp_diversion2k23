@@ -91,33 +91,43 @@ function TeacherDoubt() {
   }; //TODO: handle it
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <>
+    <div className="App h-full w-full bg-slate-500 p-6">
+      <div>
+    {/* <h3 className="text-4xl text-black font-semibold m-4">Incoming Doubts</h3> */}
+      <div className="App-header flex justify-center flex-row bg-white p-4">
         {questions.map((questionObj) => {
           return (
+            <div className="flex flex-row bg-red-600">
             <div
-              className="question"
+              className="question flex p-10 flex-col border bg-slate-900 rounded-xl m-1"
               key={questionObj.studentId}
               studentId={questionObj.studentId}
             >
-              <input
+              <textarea
+                className="p-4 rounded-xl"
                 type="text"
                 name="chat"
                 placeholder="type question"
                 value={questionObj.question}
                 readOnly={true}
               />
-              <button onClick={(e) => handleAnswer(e, questionObj.studentId)}>
+              <div className="flex mt-2">
+              <button className="bg-green-500 text-white p-2 m-2 w-24 rounded-full " onClick={(e) => handleAnswer(e, questionObj.studentId)}>
                 Answer
               </button>
-              <button onClick={(e) => handleDecline(e, questionObj.studentId)}>
+              <button className="bg-red-500 text-white p-2 m-2 ml-0 w-24 rounded-full" onClick={(e) => handleDecline(e, questionObj.studentId)}>
                 Decline
               </button>
+              </div>
+            </div>
             </div>
           );
         })}
-      </header>
+      </div>
+      </div>
     </div>
+    </>
   );
 }
 
