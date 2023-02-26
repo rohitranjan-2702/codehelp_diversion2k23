@@ -64,10 +64,15 @@ function StudentDoubt() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header" ref={resultRef}>
+    <>
+    <div className="flex justify-center text-4xl p-6 font-semibold">
+      ASK YOUR DOUBT
+    </div>
+    <div className="App flex justify-center w-full p-6">
+      <header className="App-header border-black bg-slate-200 rounded-2xl p-12 shadow-xl" ref={resultRef}>
         <form onSubmit={sendQuestion}>
           <input
+            className="border-black rounded-lg p-4 m-4"
             type="text"
             name="chat"
             placeholder="type question"
@@ -76,10 +81,11 @@ function StudentDoubt() {
               setQuestion(e.target.value);
             }}
           />
-          <button type="submit">ASK</button>
+          <button type="submit" className=" rounded-lg bg-blue-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 sm:w-auto">ASK</button>
         </form>
       </header>
     </div>
+    </>
   );
 }
 
