@@ -12,6 +12,18 @@ function TeacherDoubt() {
   useEffect(() => {
     socket.emit("teacherOnline", { teacherId });
 
+    socket.on("removeQuestion", async (payload) => {
+      const studentId = payload.studentId;
+      console.log(` ${studentId} question answered by someone else`);
+      setQuestions([
+        ...questions.filter((questionObj) => {
+          if (questionObj.studentId === studentId) {
+            return false;
+          }
+        }),
+      ]);
+    });
+
     socket.on("moveToCall", async (payload) => {
       const studentId = payload.studentId;
       const teacherId = payload.teacherId;
