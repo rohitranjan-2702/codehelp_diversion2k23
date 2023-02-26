@@ -68,7 +68,7 @@ const Pricing = () => {
         {
             name: "Gold",
             pack: 200,
-            price: 500.12,
+            price: 11.99,
             features: [
                 "MAX. 200 doubts",
             ],

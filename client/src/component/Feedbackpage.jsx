@@ -1,7 +1,17 @@
-import React from 'react'
-import Rater from 'react-rater'
+import React, { useState } from 'react'
+import Rater, { Star } from 'react-rater'
 import 'react-rater/lib/react-rater.css'
 const Feedbackpage = () => {
+
+  // const[currentValue, setCurrentValue] = useState(0);
+  // // const[currentValue, setCurrentValue] = useState(0);
+  // const stars = Array(5).fill(0);
+  // console.log(currentValue);
+
+  // const handleClick = value => {
+  //   setCurrentValue(value);
+  // }
+
   return (
    <>
     <div class="m-10">
@@ -14,7 +24,13 @@ const Feedbackpage = () => {
     
     
 <div class="flex justify-center text-5xl text-amber-400 mb-4">
-<Rater total={5} rating={2} />
+  {/* {stars.map((_,index)=>{
+    return ( */}
+      <Rater total={5}  />
+    {/* )
+  })
+
+} */}
 </div>
 <div class="flex justify-center">
 <button type="button" class="align-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Submit</button>

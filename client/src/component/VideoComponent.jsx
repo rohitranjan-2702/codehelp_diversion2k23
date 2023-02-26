@@ -37,7 +37,7 @@ const VideoComponent = () => {
   console.log(appId);
   return (
     <div>
-      <h1 className="heading">Agora RTC NG SDK React Wrapper</h1>
+      <h1 className="heading flex justify-center p-4">Ongoing VideoCall</h1>
       {appId ? (
         <VideoCall setInCall={setInCall} channelName={channelName} />
       ) : (

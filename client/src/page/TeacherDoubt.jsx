@@ -92,18 +92,23 @@ function TeacherDoubt() {
 
   return (
     <>
-    <div className="App h-full w-full bg-slate-500 p-6">
-      <div>
+    <div className="App h-full w-full p-6">
+      <div className="flex justify-center text-4xl p-6 font-semibold">
+        LIVE DOUBTS
+      </div>
+      <div className="flex justify-center">
     {/* <h3 className="text-4xl text-black font-semibold m-4">Incoming Doubts</h3> */}
-      <div className="App-header flex justify-center flex-row bg-white p-4">
+      <div className="App-header w-1/2 bg-slate-300 p-12">
         {questions.map((questionObj) => {
           return (
-            <div className="flex flex-row bg-red-600">
+            <div className="flex justify-center">
+              
             <div
-              className="question flex p-10 flex-col border bg-slate-900 rounded-xl m-1"
+              className="question http://localhost:56954/ p-10 flex-col border bg-slate-900 rounded-xl m-1"
               key={questionObj.studentId}
               studentId={questionObj.studentId}
             >
+              <div className="text-white p-2 pl-0">Question:</div>
               <textarea
                 className="p-4 rounded-xl"
                 type="text"

@@ -24,7 +24,7 @@ const Home = () => {
               easy. Top techs included like REACTJS, NEXTJS and many more...
             </p>
             <div class="flex justify-center">
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={() => navigate("/login")} >
                 Get Started
               </button>
             </div>
