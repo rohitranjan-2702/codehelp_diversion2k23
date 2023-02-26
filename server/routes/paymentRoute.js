@@ -7,7 +7,8 @@ const {
 
 const router = express.Router();
 
-router.post("/verification", protect, verifyPaymentDetails);
-router.post("/razorpay", protect, performPayment);
+router.post("/razorpay", performPayment);
+router.post("/verification",  verifyPaymentDetails);
+
 
 module.exports = router;

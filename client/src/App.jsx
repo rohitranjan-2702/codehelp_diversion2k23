@@ -97,6 +97,7 @@ function App() {
           </Route>
           <Route path="/video" element={<VideoComponent />} />
         </Routes>
+        <Feedbackpage />
         <Footer />
       </LoginContext.Provider>
     </BrowserRouter>
